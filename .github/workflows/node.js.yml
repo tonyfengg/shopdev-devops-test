@@ -24,11 +24,13 @@ jobs:
 
       - name: Install dependencies backend
         run: cd shopdev-backend && npm install
+
       - name: Run stop backend
         run: |
           if pm2 jlist | grep -q '"name":"shopdev-backend"'; then
             pm2 delete shopdev-backend
           fi
+
       - name: Run start backend
         run: cd shopdev-backend && npm run pm2 && pm2 save
 

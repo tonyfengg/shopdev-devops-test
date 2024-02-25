@@ -2,7 +2,7 @@
   "name": "shopdev-backend",
   "version": "1.0.0",
   "description": "shop dev backend",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "doc": "docs"
   },
