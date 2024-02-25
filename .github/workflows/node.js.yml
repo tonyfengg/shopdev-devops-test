@@ -49,8 +49,5 @@ jobs:
       - name: Install dependencies
         run: cd shopdev-backend && npm ci
 
-    #   - name: Stop server
-    #     run: pm2 delete shopdev-backend
-
-    #   - name: Start server
-    #     run: cd shopdev-backend && npm run pm2 && pm2 save
+      - name: Restart server
+        run: pm2 restart shopdev-backend

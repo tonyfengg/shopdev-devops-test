@@ -1,7 +1,7 @@
 {
-  "name": "structure-api-mvc-express-nodejs",
+  "name": "shopdev-backend",
   "version": "1.0.0",
-  "description": "structure api mvc express nodejs",
+  "description": "shop dev backend",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -9,10 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "pm2": "pm2 start ecosystem.config.js"
+    "pm2": "pm2 start ecosystem.config.js --env production --update-env && pm2 save"
   },
   "keywords": [],
-  "author": "anonystick <anonystick@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",
