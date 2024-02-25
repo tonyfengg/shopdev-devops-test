@@ -3,10 +3,10 @@ module.exports = {
     {
       name: "shopdev-backend",
       script: "./server.js",
-      // exec_mode: "cluster",
+      exec_mode: "cluster",
       instances: 1,
-      //   watch: true,
-      //   ignore_watch: ["node_modules"],
+      watch: true,
+      ignore_watch: ["node_modules"],
       env_production: {
         NODE_ENV: "production",
       },
