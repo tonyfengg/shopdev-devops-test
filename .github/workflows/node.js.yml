@@ -47,7 +47,7 @@ jobs:
         #   cache: "npm"
 
       - name: Install dependencies
-        run: cd shopdev-backend && npm ci
+        run: cd shopdev-backend && npm install
 
       - name: Restart server
         run: pm2 restart shopdev-backend
