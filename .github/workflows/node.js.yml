@@ -23,7 +23,7 @@ jobs:
         #   cache: "npm"
 
       - name: Install dependencies
-        run: cd shopdev-frontend && npm ci
+        run: cd shopdev-frontend && npm install
 
       - name: Build
         run: cd shopdev-frontend && npm run build
