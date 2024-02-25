@@ -6,7 +6,16 @@ module.exports = {
       exec_mode: "cluster",
       instances: 1,
       watch: true,
-      ignore_watch: ["node_modules", "logs"],
+      ignore_watch: [
+        "node_modules",
+        "logs",
+        "public",
+        "test",
+        "views",
+        "README.md",
+        "package-lock.json",
+        "ecosystem.config.js",
+      ],
       env_production: {
         NODE_ENV: "production",
       },
