@@ -30,7 +30,7 @@ jobs:
             pm2 delete shopdev-backend
           fi
       - name: Run start backend
-        run: cd shopdev-backend && npm run pm2
+        run: cd shopdev-backend && npm run pm2 && pm2 save
 
       - name: Install dependencies frontend
         run: cd shopdev-frontend && npm install
