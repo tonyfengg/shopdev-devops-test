@@ -6,7 +6,7 @@ module.exports = {
       exec_mode: "cluster",
       instances: 1,
       watch: true,
-      ignore_watch: ["node_modules"],
+      ignore_watch: ["node_modules", "logs"],
       env_production: {
         NODE_ENV: "production",
       },

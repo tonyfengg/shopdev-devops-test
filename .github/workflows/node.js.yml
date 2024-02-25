@@ -20,13 +20,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-        #   cache: "npm"
+          cache: "npm"
 
       - name: Install dependencies backend
         run: cd shopdev-backend && npm install
-
-      - name: Restart server backend
-        run: pm2 restart shopdev-backend
 
       - name: Install dependencies frontend
         run: cd shopdev-frontend && npm install
