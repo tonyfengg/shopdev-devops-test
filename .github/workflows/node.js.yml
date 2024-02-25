@@ -1,0 +1,56 @@
+name: Node.js CI/CD shopDEV
+
+on:
+  push:
+    paths:
+      - "shopdev-frontend/**"
+      - "shopdev-backend/**"
+
+jobs:
+  build-frontend:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    if: contains(github.event.head_commit.message, 'shopdev-frontend')
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: cd shopdev-frontend && npm ci
+
+      - name: Build
+        run: cd shopdev-frontend && npm run build
+
+      - name: Test
+        run: cd shopdev-frontend && npm test
+
+  build-backend:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    if: contains(github.event.head_commit.message, 'shopdev-backend')
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: cd shopdev-backend && npm ci
+
+    #   - name: Stop server
+    #     run: pm2 delete shopdev-backend
+
+    #   - name: Start server
+    #     run: cd shopdev-backend && npm run pm2 && pm2 save
