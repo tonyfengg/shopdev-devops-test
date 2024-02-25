@@ -7,7 +7,7 @@ on:
       - "shopdev-backend/**"
 
 jobs:
-  build-frontend:
+  build:
     runs-on: self-hosted
     if: contains(github.event.head_commit.message, 'deploy')
     strategy:
@@ -22,29 +22,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
         #   cache: "npm"
 
-      - name: Install dependencies
-        run: cd shopdev-frontend && npm install
-
-      - name: Build
-        run: cd shopdev-frontend && npm run build
-
-  build-backend:
-    runs-on: self-hosted
-    if: contains(github.event.head_commit.message, 'deploy')
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-        #   cache: "npm"
-
-      - name: Install dependencies
+      - name: Install dependencies backend
         run: cd shopdev-backend && npm install
 
-      - name: Restart server
+      - name: Restart server backend
         run: pm2 restart shopdev-backend
+
+      - name: Install dependencies frontend
+        run: cd shopdev-frontend && npm install
+
+      - name: Build frontend
+        run: cd shopdev-frontend && npm run build
